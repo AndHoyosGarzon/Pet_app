@@ -7,8 +7,10 @@ import { useParams } from "react-router-dom";
 import SkeletonCard from "../components/Skeleton";
 
 function Pets() {
+  const skeletonArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
+
   const [loading, setLoading] = useState(true);
 
   const { pet } = useParams();
@@ -25,8 +27,8 @@ function Pets() {
   if (loading) {
     return (
       <div className="container-fluid d-flex justify-content-around  flex-wrap mt-5">
-        {data.map(a => {
-          return <SkeletonCard key={a.id}/>
+        {skeletonArr.map((s) => {
+          return <SkeletonCard key={s} />;
         })}
       </div>
     );
@@ -52,7 +54,7 @@ function Pets() {
             );
           })
         ) : (
-          <div>Error</div>
+          <div>{error}</div>
         )}
       </div>
     );
